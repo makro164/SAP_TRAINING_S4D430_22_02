@@ -1,0 +1,73 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo: {
+    title.value: 'CarrierID',
+    description.value: 'ConnectionID',
+    typeName: 'Connection',
+    typeNamePlural: 'Connections'
+}
+annotate view ZC_00_ConnectionTP with
+{
+
+  /* Abschnitt */
+  @UI.facet: [{
+    type: #IDENTIFICATION_REFERENCE,
+    label: 'General Information',
+    position: 10
+  }, {
+    type: #LINEITEM_REFERENCE,
+    label: 'Flights',
+    targetElement: '_Flights',
+    position: 20
+  }]
+    
+  /* Felder */
+  @UI.selectionField: [{ position: 10 }]
+  @UI.lineItem: [
+    { position: 10 },
+    { position: 10, type: #FOR_ACTION, dataAction: 'BOPF:SWITCH_FLIGHTTYPE', label: 'Switch FlightType' }]
+  @UI.identification: [{ position: 10 }]
+  CarrierID;
+
+  @UI.selectionField: [{ position: 20 }]
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  ConnectionID;
+
+  @UI.identification: [{ position: 30 }]
+  CountryFrom;
+
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 40 }]
+  CityFrom;
+
+  @UI.identification: [{ position: 50 }]
+  AirportFrom;
+
+  @UI.identification: [{ position: 60 }]
+  CountryTo;
+
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 70 }]
+  CityTo;
+
+  @UI.identification: [{ position: 80 }]
+  AirportTo;
+
+  @UI.identification: [{ position: 90 }]
+  DepartureTime;
+
+  @UI.identification: [{ position: 100 }]
+  ArrivalTime;
+  
+  @UI.dataPoint: { visualization: #PROGRESS, targetValue: 10000 }
+  @UI.lineItem: [{ position: 50, type: #AS_DATAPOINT }]
+  @UI.identification: [{ position: 110 }]
+  Distance;
+
+  @UI.identification: [{ position: 120 }]
+  DistanceUnit;
+
+  @UI.identification: [{ position: 130 }]
+  FlightType;
+
+}

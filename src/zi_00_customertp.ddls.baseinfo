@@ -6,8 +6,13 @@
 "ZI_00_CUSTOMER2"
 ],
 "ASSOCIATED":
-[],
+[
+"ZI_00_BOOKINGTP"
+],
 "BASE":
-[]
+[],
+"ANNO_REF":
+[],
+"VERSION":0
 }
 }

@@ -4,8 +4,22 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Transactional Interface-View: Customer'
 @VDM.viewType: #TRANSACTIONAL
+@ObjectModel: {
+    transactionalProcessingEnabled: true,
+    compositionRoot: true,
+    writeActivePersistence: 'scustom',
+
+    modelCategory: #BUSINESS_OBJECT,
+    representativeKey: 'ID',
+    semanticKey: ['Name'],
+
+    createEnabled: true,
+    updateEnabled: true,
+    deleteEnabled: true
+}
 define view ZI_00_CustomerTP
   as select from ZI_00_CUSTOMER2
+  association [*] to ZI_00_BookingTP as _Bookings on _Bookings.CustomerID = ZI_00_CUSTOMER2.ID
 {
   key ID,
       Name,
@@ -13,5 +27,7 @@ define view ZI_00_CustomerTP
       Postcode,
       City,
       Country,
-      Discount
+      Discount,
+      @ObjectModel.association.type: [#TO_COMPOSITION_CHILD]
+      _Bookings
 }

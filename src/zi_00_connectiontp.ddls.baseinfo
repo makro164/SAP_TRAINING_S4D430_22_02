@@ -6,8 +6,13 @@
 "ZI_00_CONNECTION"
 ],
 "ASSOCIATED":
-[],
+[
+"ZI_00_FLIGHTTP"
+],
 "BASE":
-[]
+[],
+"ANNO_REF":
+[],
+"VERSION":0
 }
 }
